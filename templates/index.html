@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <script src="{{url_for('static', filename='js/script.js')}}" defer></script>
+    <title>Mail list</title>
 </head>
 <body>
-
+    <h1>Index</h1>
+    <button><a href="{{url_for('logout')}}">Kijelentkezés</a></button>
+    <table>
+        <thead>
+            <tr>
+                <th>Vezetéknév</th>
+                <th>Keresztnév</th>
+                <th>Email</th>
+                <th>Telefonszám</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
 </body>
 </html>

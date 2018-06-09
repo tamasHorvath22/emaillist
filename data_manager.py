@@ -29,3 +29,12 @@ def add_new_user_to_database(cursor, new_user):
                     INSERT INTO users (username, password)
                     VALUES (%(username)s, %(password)s);
                     """, new_user)
+
+
+@connection.connection_handler
+def get_all_emails(cursor):
+    cursor.execute("""
+                    SELECT * FROM public.email_list
+                    """)
+    cucc = cursor.fetchall()
+    return cucc

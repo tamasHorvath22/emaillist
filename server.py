@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, url_for, redirect, session
+from flask import Flask, render_template, request, url_for, redirect, session, jsonify
 import data_manager
 import hash
+import login_module
 import os
 
 
@@ -17,7 +18,7 @@ def login():
             if is_correct_password:
                 session["username"] = login_data["username"]
                 session["user_id"] = user_data_from_database["id"]
-                return redirect(url_for('index', admin_name=session["username"]))
+                return redirect(url_for('index'))
         return render_template('login.html', failed_login=True)
     return render_template('login.html')
 
@@ -45,6 +46,18 @@ def submit_registration():
             return redirect(url_for('registration', token=new_registration['token']))
     else:
         return redirect(url_for('login'))
+
+
+@app.route('/index')
+@login_module.login_required
+def index():
+    return render_template('index.html')
+
+
+@app.route('/get-all-emails')
+def get_all_emails():
+    data = data_manager.get_all_emails()
+    return jsonify(data)
 
 
 @app.route('/logout')
