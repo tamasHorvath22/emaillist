@@ -60,6 +60,16 @@ def get_all_emails():
     return jsonify(data)
 
 
+@app.route('/add-new-email', methods=['GET', 'POST'])
+def add_new_email():
+    if request.method == 'POST':
+        new_email = request.form.to_dict()
+        data_manager.save_new_email(new_email)
+        return redirect(url_for('index'))
+    else:
+        return render_template('add_new_email.html')
+
+
 @app.route('/logout')
 def logout():
     session.clear()

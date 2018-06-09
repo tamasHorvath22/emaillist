@@ -38,3 +38,11 @@ def get_all_emails(cursor):
                     """)
     cucc = cursor.fetchall()
     return cucc
+
+
+@connection.connection_handler
+def save_new_email(cursor, new_email):
+    cursor.execute("""
+                    INSERT INTO email_list (first_name, last_name, email, phone)
+                    VALUES (%(first_name)s, %(last_name)s, %(email)s, %(phone)s);
+                    """, new_email)
