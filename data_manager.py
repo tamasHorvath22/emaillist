@@ -46,3 +46,12 @@ def save_new_email(cursor, new_email):
                     INSERT INTO email_list (first_name, last_name, email, phone)
                     VALUES (%(first_name)s, %(last_name)s, %(email)s, %(phone)s);
                     """, new_email)
+
+
+@connection.connection_handler
+def get_sorted_emails(cursor, orderBy, direction):
+    cursor.execute("""
+                    SELECT * FROM email_list
+                    ORDER BY {} {}
+                    """.format(orderBy, direction))
+    return cursor.fetchall()

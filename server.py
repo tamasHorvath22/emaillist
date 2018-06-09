@@ -70,6 +70,11 @@ def add_new_email():
         return render_template('add_new_email.html')
 
 
+@app.route('/order/<order_by>/<direction>')
+def order(order_by, direction):
+    return jsonify(data_manager.get_sorted_emails(order_by, direction))
+
+
 @app.route('/logout')
 def logout():
     session.clear()

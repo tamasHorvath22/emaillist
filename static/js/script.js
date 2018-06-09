@@ -1,8 +1,10 @@
 dom = {
     _allEmail: "",
+    _orderDirection: "",
 
     init: function () {
-        dom.getAllEmails()
+        dom.getAllEmails();
+        dom.sortEmails();
     },
 
     getAllEmails: function() {
@@ -16,6 +18,7 @@ dom = {
 
     displayEmails: function() {
         let tableBody = document.getElementById("tableBody");
+        tableBody.innerText = "";
         for(let row = 0; row < dom._allEmail.length; row ++) {
             let tableRow = document.createElement("tr");
             let columns = ["last_name", "first_name", "email", "phone"];
@@ -26,6 +29,29 @@ dom = {
                 tableRow.appendChild(tableData);
             }
             tableBody.appendChild(tableRow);
+        }
+    },
+
+    sortEmails: function() {
+        let sortButtons = document.getElementsByClassName("tableHeaders");
+        for(button of sortButtons) {
+            button.style.cursor = "pointer";
+            let orderBy = button.dataset.name;
+                button.addEventListener('click', function () {
+                    dom._allEmail = "";
+                    if (dom._orderDirection === "" || dom._orderDirection === "DESC") {
+                        dom._orderDirection = "ASC";
+                    } else if (dom._orderDirection === "ASC") {
+                        dom._orderDirection = "DESC"
+                    }
+                    let jsonURL = '/order/' + orderBy + '/' + dom._orderDirection;
+                    fetch(jsonURL)
+                    .then(response => response.json())
+                    .then(function(result) {
+                        dom._allEmail = result;
+                        dom.displayEmails();
+                    });
+                })
         }
     }
 };
