@@ -82,6 +82,13 @@ def edit(id):
                            email_data=email_data)
 
 
+@app.route('/save-edited', methods=['POST'])
+def save_edited():
+    edited_data = request.form.to_dict()
+    data_manager.update_email(edited_data)
+    return redirect(url_for('index'))
+
+
 @app.route('/delete/<id>', methods=['GET', 'POST'])
 def delete(id):
     email_data = request.form.to_dict()

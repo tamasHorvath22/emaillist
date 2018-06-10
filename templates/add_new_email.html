@@ -2,19 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{url_for('static', filename='js/script.js')}}" defer></script>
     <title>Email hozzáadása</title>
 </head>
 <body>
-    <form action="{{ url_for('add_new_email') }}" method="POST">
-        <label for="last_name">Vezetéknév</label>
-        <input type="text" name="last_name" id="last_name">
-        <label for="first_name"></label>
-        <input type="text" name="first_name" id="first_name">
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email">
-        <label for="phone">Telefonszám</label>
-        <input type="text" name="phone" id="phone">
-        <button type="submit">Ok</button>
-    </form>
+    <div id="input-box">
+        <form action="{{ url_for('add_new_email') }}" method="POST">
+            <div class="form-group">
+                <label for="last_name">Vezetéknév</label>
+                <input type="text" class="form-control" name="last_name" id="last_name" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+                <label for="first_name">Keresztnév</label>
+                <input type="text" class="form-control" name="first_name" id="first_name" p>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" name="email" id="email">
+            </div>
+            <div class="form-group">
+                    <label for="phone">Telefonszám</label>
+                <input type="text" class="form-control" name="phone" id="phone">
+            </div>
+            <button type="submit" class="btn btn-primary">Ok</button>
+        </form>
+    </div>
 </body>
 </html>

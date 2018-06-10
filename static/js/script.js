@@ -20,6 +20,7 @@ dom = {
                 dom._emailsToDisplay = result;
                 dom._allEmail = result;
                 dom.displayEmails();
+                dom.modify();
         });
     },
 
@@ -36,6 +37,7 @@ dom = {
                 tableData.appendChild(tempItem);
                 tableRow.appendChild(tableData);
             }
+
             let modifyButtonTag = document.createElement("button");
             modifyButtonTag.innerText = "szerkesztés";
             let modifyAnchorTag = document.createElement("a");
@@ -49,14 +51,12 @@ dom = {
             deleteButtonTag.setAttribute("class", "deleteButtons");
             deleteButtonTag.setAttribute("data-id", id);
             deleteButtonTag.innerText = "törlés";
-            let deleteAnchorTag = document.createElement("a");
-            // deleteAnchorTag.setAttribute("href", "/delete/" + id);
-            deleteAnchorTag.appendChild(deleteButtonTag);
-            tableRow.appendChild(deleteAnchorTag);
+            tableRow.appendChild(deleteButtonTag);
 
             tableBody.appendChild(tableRow);
         }
         dom.findIdToDeleteEmail();
+        dom.modify();
     },
 
     sortEmails: function() {
@@ -118,14 +118,27 @@ dom = {
         deleteConfirmButton.addEventListener('click', function() {
             $.post('/delete/' + dom._idToDelete, {
                 id: dom._idToDelete
-            })
+            });
+            dom.getAllEmails();
         });
-        dom._idToDelete = "";
-        dom.getAllEmails();
     },
 
     modify: function() {
-        let modifyButton = document.getElementById()
+        let modifyButton = document.getElementById("confirm_modify");
+        modifyButton.addEventListener('click', function() {
+            let id = document.getElementById("id_edit").value;
+            let first_name = document.getElementById("first_name_edit").value;
+            let last_name = document.getElementById("last_name_edit").value;
+            let email = document.getElementById("email_edit").value;
+            let phone = document.getElementById("phone_edit").value;
+            $.post('/save-edited', {
+                id: id,
+                first_name: first_name,
+                last_name: last_name,
+                email: email,
+                phone: phone
+            })
+        })
     }
 };
 

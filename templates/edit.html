@@ -13,21 +13,45 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <script src="{{url_for('static', filename='js/script.js')}}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{url_for('static', filename='js/script.js')}}" defer ></script>
 
     <title>Szerkesztés</title>
 </head>
 <body>
-    <label for="last_name_edit">Vezetéknév</label>
-    <input type="text" name="last_name_edit" id="last_name_edit" value="{{email_data.last_name}}">
-    <label for="first_name_edit"></label>
-    <input type="text" name="first_name_edit" id="first_name_edit" value="{{email_data.first_name}}">
-    <label for="email_edit">Email</label>
-    <input type="text" name="email_edit" id="email_edit" value="{{email_data.email}}">
-    <label for="phone_edit">Telefonszám</label>
-    <input type="text" name="phone_edit" id="phone_edit" value="{{email_data.phone}}">
-    <button type="submit" id="submitEdit" data-toggle="modal" data-target="#edit-modal">Ok</button>
-</body>
+    <!--<label for="last_name_edit">Vezetéknév</label>-->
+    <!--<input type="text" name="last_name_edit" id="last_name_edit" value="{{email_data.last_name}}">-->
+    <!--<label for="first_name_edit"></label>-->
+    <!--<input type="text" name="first_name_edit" id="first_name_edit" value="{{email_data.first_name}}">-->
+    <!--<label for="email_edit">Email</label>-->
+    <!--<input type="text" name="email_edit" id="email_edit" value="{{email_data.email}}">-->
+    <!--<label for="phone_edit">Telefonszám</label>-->
+    <!--<input type="text" name="phone_edit" id="phone_edit" value="{{email_data.phone}}">-->
+    <!--<input type="hidden" id="id_edit" value="email_data.id">-->
+    <!--<button type="submit" id="submitEdit" data-toggle="modal" data-target="#edit-modal">Ok</button>-->
+
+    <div id="input-box">
+
+        <div class="form-group">
+            <label for="last_name_edit">Vezetéknév</label>
+            <input type="text" class="form-control" name="last_name_edit" id="last_name_edit" aria-describedby="emailHelp" value="{{email_data.last_name}}">
+        </div>
+        <div class="form-group">
+            <label for="first_name_edit">Keresztnév</label>
+            <input type="text" class="form-control" name="first_name_edit" id="first_name_edit" value="{{email_data.first_name}}">
+        </div>
+        <div class="form-group">
+            <label for="email_edit">Email</label>
+            <input type="text" class="form-control" name="email_edit" id="email_edit" value="{{email_data.email}}">
+        </div>
+        <div class="form-group">
+                <label for="phone_edit">Telefonszám</label>
+            <input type="text" class="form-control" name="phone_edit" id="phone_edit" value="{{email_data.phone}}">
+        </div>
+        <button type="button" class="btn btn-primary" id="submitEdit" data-toggle="modal" data-target="#edit-modal">Ok</button>
+
+    </div>
 
 <!-- Modify, delete modal -->
 <div class="modal fade " id="edit-modal" tabindex="-1" role="dialog"
@@ -36,35 +60,25 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
-                <h5 class="modal-title">Módosítás/Törlés</h5>
+                <h5 class="modal-title">Biztos módosítod?</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"
                         id="mod-del-modal-close-button">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body bg-light text-dark">
-                <form action="" method="POST">
-                    <div>
-                        <input type="hidden" id="booking_id">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="modify_button" class="btn btn-info" data-toggle="modal">
-                            Módosít
-                        </button>
-                        <button type="button" id="confirm_modify_button" data-dismiss="modal" class="btn btn-danger"
-                                data-toggle="modal">Biztos módosítod?
-                        </button>
-                        <button type="button" id="delete_button" class="btn btn-info" data-toggle="modal">
-                            Töröl
-                        </button>
-                        <button type="button" id="confirm_delete_button" data-dismiss="modal" class="btn btn-danger"
-                                data-toggle="modal">Biztos törlöd?
-                        </button>
-                    </div>
-                </form>
+                <div>
+                    <input type="hidden" id="booking_id">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="confirm_modify" data-dismiss="modal" class="btn btn-danger xxx"
+                            data-toggle="modal">Igen
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+</body>
 </html>

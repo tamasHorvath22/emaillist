@@ -14,28 +14,46 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="{{url_for('static', filename='js/script.js')}}" defer></script>
     <title>Mail list</title>
 </head>
 <body>
-    <h1>Index</h1>
-    <a href="{{url_for('logout')}}"><button>Kijelentkezés</button></a>
-    <a href="{{ url_for('add_new_email') }}"><button>Hozzáadás</button></a>
-    <br>
-    <label for="search">Keresés</label>
-    <input type="text" name="search" id="search">
-    <table>
-        <thead>
-            <tr>
-                <th id="lastNameSort" class="tableHeaders" data-name="last_name">Vezetéknév</th>
-                <th id="firstNameSort" class="tableHeaders" data-name="first_name">Keresztnév</th>
-                <th id="emailSort" class="tableHeaders" data-name="email">Email</th>
-                <th id="phoneSort" class="tableHeaders" data-name="phone">Telefonszám</th>
-            </tr>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{{ url_for('index') }}">Karesz listája</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="navbar-brand" href="{{ url_for('add_new_email') }}">Hozzáadás</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Keresés" aria-label="Search" name="search" id="search">
+            <a href="{{url_for('logout')}}"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Kijelentkezés</button></a>
+        </form>
+    </div>
+</nav>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th id="lastNameSort" class="tableHeaders" data-name="last_name" scope="col">Vezetéknév</th>
+            <th id="firstNameSort" class="tableHeaders" data-name="first_name" scope="col">Keresztnév</th>
+            <th id="emailSort" class="tableHeaders" data-name="email" scope="col">Email</th>
+            <th id="phoneSort" class="tableHeaders" data-name="phone" scope="col">Telefonszám</th>
+            <th class="tableHeaders" scope="col">Szerkesztés/Törlés</th>
+        </tr>
         </thead>
         <tbody id="tableBody">
         </tbody>
     </table>
+</div>
 
 <!-- Modify, delete modal -->
 <div class="modal fade " id="delete-modal" tabindex="-1" role="dialog"

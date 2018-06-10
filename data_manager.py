@@ -72,3 +72,12 @@ def delete_email(cursor, email_data):
                     DELETE FROM email_list
                     WHERE id = %(id)s
                     """, email_data)
+
+
+@connection.connection_handler
+def update_email(cursor, updated_email):
+    cursor.execute("""
+                    UPDATE email_list
+                    SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s, phone = %(phone)s
+                    WHERE id = %(id)s
+                    """, updated_email)
