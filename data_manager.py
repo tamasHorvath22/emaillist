@@ -64,3 +64,11 @@ def get_email_data(cursor, id):
                     WHERE id = %(id)s
                     """, {"id": id})
     return cursor.fetchone()
+
+
+@connection.connection_handler
+def delete_email(cursor, email_data):
+    cursor.execute("""
+                    DELETE FROM email_list
+                    WHERE id = %(id)s
+                    """, email_data)

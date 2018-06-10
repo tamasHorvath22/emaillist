@@ -78,8 +78,15 @@ def order(order_by, direction):
 @app.route('/edit/<id>')
 def edit(id):
     email_data = data_manager.get_email_data(id)
-    return render_template('edit_delete.html',
+    return render_template('edit.html',
                            email_data=email_data)
+
+
+@app.route('/delete/<id>', methods=['GET', 'POST'])
+def delete(id):
+    email_data = request.form.to_dict()
+    data_manager.delete_email(email_data)
+    return redirect(url_for('index'))
 
 
 @app.route('/logout')
