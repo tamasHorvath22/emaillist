@@ -7,8 +7,11 @@
 </head>
 <body>
     <h1>Index</h1>
-    <button><a href="{{url_for('logout')}}">Kijelentkezés</a></button>
-    <button><a href="{{ url_for('add_new_email') }}">Hozzáadás</a></button>
+    <a href="{{url_for('logout')}}"><button>Kijelentkezés</button></a>
+    <a href="{{ url_for('add_new_email') }}"><button>Hozzáadás</button></a>
+    <br>
+    <label for="search">Keresés</label>
+    <input type="text" name="search" id="search">
     <table>
         <thead>
             <tr>

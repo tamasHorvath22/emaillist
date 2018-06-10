@@ -55,3 +55,12 @@ def get_sorted_emails(cursor, orderBy, direction):
                     ORDER BY {} {}
                     """.format(orderBy, direction))
     return cursor.fetchall()
+
+
+@connection.connection_handler
+def get_email_data(cursor, id):
+    cursor.execute("""
+                    SELECT * FROM email_list
+                    WHERE id = %(id)s
+                    """, {"id": id})
+    return cursor.fetchone()

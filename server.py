@@ -75,6 +75,13 @@ def order(order_by, direction):
     return jsonify(data_manager.get_sorted_emails(order_by, direction))
 
 
+@app.route('/edit/<id>')
+def edit(id):
+    email_data = data_manager.get_email_data(id)
+    return render_template('edit_delete.html',
+                           email_data=email_data)
+
+
 @app.route('/logout')
 def logout():
     session.clear()
