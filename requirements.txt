@@ -7,3 +7,10 @@ Werkzeug==0.14.1
 psycopg2==2.7.4
 requests==2.9.1
 bcrypt==3.1.4
+cffi==1.11.5
+click==6.7
+pip==10.0.1
+pycparser==2.18
+setuptools==39.2.0
+six==1.11.0
+wheel==0.31.1
