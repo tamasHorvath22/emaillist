@@ -81,3 +81,11 @@ def update_email(cursor, updated_email):
                     SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s, phone = %(phone)s
                     WHERE id = %(id)s
                     """, updated_email)
+
+
+@connection.connection_handler
+def get_data_to_write_to_file(cursor):
+    cursor.execute("""
+                    SELECT CONCAT(last_name, ' ', first_name) AS name, email, phone FROM email_list
+                    """)
+    return cursor.fetchall()

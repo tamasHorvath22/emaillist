@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect, session, j
 import data_manager
 import hash
 import login_module
-import os
+import file_handler
 
 
 app = Flask(__name__)
@@ -93,6 +93,12 @@ def save_edited():
 def delete():
     email_data = request.form.to_dict()
     data_manager.delete_email(email_data)
+    return redirect(url_for('index'))
+
+
+@app.route('/download')
+def download():
+    file_handler.fill_csv_file()
     return redirect(url_for('index'))
 
 
