@@ -39,6 +39,7 @@ dom = {
             }
 
             let modifyButtonTag = document.createElement("button");
+            modifyButtonTag.setAttribute("class", "btn btn-primary edit-buttons");
             modifyButtonTag.innerText = "szerkesztés";
             let modifyAnchorTag = document.createElement("a");
             modifyAnchorTag.setAttribute("href", "/edit/" + id);
@@ -48,7 +49,7 @@ dom = {
             let deleteButtonTag = document.createElement("button");
             deleteButtonTag.setAttribute("data-toggle", "modal");
             deleteButtonTag.setAttribute("data-target", "#delete-modal");
-            deleteButtonTag.setAttribute("class", "deleteButtons");
+            deleteButtonTag.setAttribute("class", "deleteButtons btn btn-danger");
             deleteButtonTag.setAttribute("data-id", id);
             deleteButtonTag.innerText = "törlés";
             tableRow.appendChild(deleteButtonTag);
@@ -119,7 +120,7 @@ dom = {
     deleteEmail: function() {
         let deleteConfirmButton = document.getElementById("confirm_delete_button");
         deleteConfirmButton.addEventListener('click', function() {
-            $.post('/delete/' + dom._idToDelete, {
+            $.post('/delete', {
                 id: dom._idToDelete
             });
             dom.getAllEmails();

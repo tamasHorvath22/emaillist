@@ -89,8 +89,8 @@ def save_edited():
     return redirect(url_for('index'))
 
 
-@app.route('/delete/<id>', methods=['GET', 'POST'])
-def delete(id):
+@app.route('/delete', methods=['POST'])
+def delete():
     email_data = request.form.to_dict()
     data_manager.delete_email(email_data)
     return redirect(url_for('index'))
