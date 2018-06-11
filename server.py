@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, session, jsonify
+from flask import Flask, render_template, request, url_for, redirect, session, jsonify, send_file
 import data_manager
 import hash
 import login_module
@@ -61,6 +61,7 @@ def get_all_emails():
 
 
 @app.route('/add-new-email', methods=['GET', 'POST'])
+@login_module.login_required
 def add_new_email():
     if request.method == 'POST':
         new_email = request.form.to_dict()
@@ -97,9 +98,10 @@ def delete():
 
 
 @app.route('/download')
+@login_module.login_required
 def download():
     file_handler.fill_csv_file()
-    return redirect(url_for('index'))
+    return send_file('data/download/data.csv')
 
 
 @app.route('/logout')
