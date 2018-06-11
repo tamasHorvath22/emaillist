@@ -6,6 +6,7 @@ import file_handler
 
 
 app = Flask(__name__)
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -110,11 +111,3 @@ def download_file():
 def logout():
     session.clear()
     return redirect(url_for('login'))
-
-
-if __name__ == '__main__':
-    app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-    app.run(
-        debug=True,
-        port=5000
-    )

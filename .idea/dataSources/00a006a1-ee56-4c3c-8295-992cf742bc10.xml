@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="emaillist@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.7">
+    <root id="1"/>
+    <database id="2" parent="1" name="emaillist">
+      <ObjectId>28945</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12413</ObjectId>
+    </database>
+    <database id="4" parent="1" name="tamas2">
+      <ObjectId>16385</ObjectId>
+    </database>
+    <database id="5" parent="1" name="test">
+      <ObjectId>16406</ObjectId>
+    </database>
+    <database id="6" parent="1" name="mentors">
+      <ObjectId>16407</ObjectId>
+    </database>
+    <database id="7" parent="1" name="askmate">
+      <ObjectId>16433</ObjectId>
+    </database>
+    <database id="8" parent="1" name="table_booking">
+      <ObjectId>16713</ObjectId>
+    </database>
+    <database id="9" parent="1" name="web_module_pa">
+      <ObjectId>17486</ObjectId>
+    </database>
+    <database id="10" parent="1" name="bami">
+      <ObjectId>17745</ObjectId>
+    </database>
+    <database id="11" parent="1" name="web_mobule_pa">
+      <ObjectId>18008</ObjectId>
+    </database>
+    <database id="12" parent="1" name="api_wars">
+      <ObjectId>18374</ObjectId>
+    </database>
+    <database id="13" parent="1" name="proman">
+      <ObjectId>18445</ObjectId>
+    </database>
+    <database id="14" parent="1" name="java_test">
+      <ObjectId>18514</ObjectId>
+    </database>
+    <database id="15" parent="1" name="todolist">
+      <ObjectId>18520</ObjectId>
+    </database>
+    <database id="16" parent="1" name="shopcool">
+      <ObjectId>18799</ObjectId>
+    </database>
+    <database id="17" parent="1" name="table_book">
+      <ObjectId>18978</ObjectId>
+    </database>
+    <database id="18" parent="1" name="jpaexampledb">
+      <ObjectId>19063</ObjectId>
+    </database>
+    <database id="19" parent="1" name="ptadb">
+      <ObjectId>20678</ObjectId>
+    </database>
+    <database id="20" parent="1" name="graph">
+      <ObjectId>26871</ObjectId>
+    </database>
+    <role id="21" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <role id="22" parent="1" name="tamas2">
+      <ObjectId>16384</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <schema id="23" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2018-06-09.17:51:41.641</IntrospectionTimestamp>
+      <IntrospectionStateNumber>224768</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="24" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="25" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="26" parent="2" name="pg_temp_1">
+      <ObjectId>11816</ObjectId>
+    </schema>
+    <schema id="27" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11817</ObjectId>
+    </schema>
+    <schema id="28" parent="2" name="information_schema">
+      <ObjectId>12121</ObjectId>
+    </schema>
+    <sequence id="29" parent="23" name="email_list_id_seq">
+      <ObjectId>29038</ObjectId>
+      <StateNumber>224760</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="30" parent="23" name="token_id_seq">
+      <ObjectId>28965</ObjectId>
+      <StateNumber>224717</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="31" parent="23" name="users_id_seq">
+      <ObjectId>28949</ObjectId>
+      <StateNumber>224709</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <table id="32" parent="23" name="email_list">
+      <ObjectId>29034</ObjectId>
+      <StateNumber>224768</StateNumber>
+    </table>
+    <table id="33" parent="23" name="token">
+      <ObjectId>28962</ObjectId>
+      <StateNumber>224720</StateNumber>
+    </table>
+    <table id="34" parent="23" name="users">
+      <ObjectId>28946</ObjectId>
+      <StateNumber>224714</StateNumber>
+    </table>
+    <column id="35" parent="32" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>224760</StateNumber>
+      <DefaultExpression>nextval(&apos;email_list_id_seq&apos;::regclass)</DefaultExpression>
+      <SequenceName>email_list_id_seq</SequenceName>
+    </column>
+    <column id="36" parent="32" name="first_name">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>224763</StateNumber>
+    </column>
+    <column id="37" parent="32" name="last_name">
+      <Position>3</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>224764</StateNumber>
+    </column>
+    <column id="38" parent="32" name="email">
+      <Position>4</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>224766</StateNumber>
+    </column>
+    <column id="39" parent="32" name="phone">
+      <Position>5</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>224768</StateNumber>
+    </column>
+    <index id="40" parent="32" name="email_list_id_pk">
+      <ObjectId>29045</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="41" parent="32" name="email_list_id_uindex">
+      <ObjectId>29044</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="42" parent="32" name="email_list_email_uindex">
+      <ObjectId>29050</ObjectId>
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="43" parent="32" name="email_list_id_pk">
+      <ObjectId>29046</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>email_list_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="44" parent="33" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>224717</StateNumber>
+      <DefaultExpression>nextval(&apos;token_id_seq&apos;::regclass)</DefaultExpression>
+      <SequenceName>token_id_seq</SequenceName>
+    </column>
+    <column id="45" parent="33" name="token">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>224720</StateNumber>
+    </column>
+    <index id="46" parent="33" name="token_id_pk">
+      <ObjectId>28972</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="47" parent="33" name="token_id_uindex">
+      <ObjectId>28971</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="48" parent="33" name="token_token_uindex">
+      <ObjectId>28977</ObjectId>
+      <ColNames>token</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="49" parent="33" name="token_id_pk">
+      <ObjectId>28973</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>token_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="50" parent="34" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>224709</StateNumber>
+      <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
+      <SequenceName>users_id_seq</SequenceName>
+    </column>
+    <column id="51" parent="34" name="username">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>224712</StateNumber>
+    </column>
+    <column id="52" parent="34" name="password">
+      <Position>3</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>224714</StateNumber>
+    </column>
+    <index id="53" parent="34" name="users_id_pk">
+      <ObjectId>28956</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="54" parent="34" name="users_id_uindex">
+      <ObjectId>28955</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="55" parent="34" name="users_username_uindex">
+      <ObjectId>28961</ObjectId>
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="56" parent="34" name="users_id_pk">
+      <ObjectId>28957</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>users_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
