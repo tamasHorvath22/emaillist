@@ -30,6 +30,7 @@ dom = {
         for(let row = 0; row < dom._emailsToDisplay.length; row ++) {
             let id = dom._emailsToDisplay[row]["id"];
             let tableRow = document.createElement("tr");
+            tableRow.setAttribute("id", id);
             let columns = ["last_name", "first_name", "email", "phone"];
             for(let elem = 0; elem < columns.length; elem++) {
                 let tableData = document.createElement("td");
@@ -123,7 +124,8 @@ dom = {
             $.post('/delete', {
                 id: dom._idToDelete
             });
-            dom.getAllEmails();
+            let rowToDelete = document.getElementById(dom._idToDelete);
+            rowToDelete.remove();
         });
     },
 
