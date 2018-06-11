@@ -97,17 +97,6 @@ def delete():
     return redirect(url_for('index'))
 
 
-# @app.route('/download')
-# def download():
-#     file_handler.fill_csv_file()
-#     # return send_file('data/download/data.csv', mimetype="text/csv")
-#     return Response(
-#         "ttttttttttttttttttttttv",
-#         mimetype="text/csv",
-#         headers={"Content-disposition":
-#                      "attachment; filename=cucc.csv"})
-
-
 @app.route('/download-data-file')
 def download_file():
     file_handler.fill_csv_file()
