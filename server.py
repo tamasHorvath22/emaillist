@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, session, jsonify, send_file
+from flask import Flask, render_template, request, url_for, redirect, session, jsonify, send_file, Response
 import data_manager
 import hash
 import login_module
@@ -97,11 +97,24 @@ def delete():
     return redirect(url_for('index'))
 
 
-@app.route('/download')
-@login_module.login_required
-def download():
+# @app.route('/download')
+# def download():
+#     file_handler.fill_csv_file()
+#     # return send_file('data/download/data.csv', mimetype="text/csv")
+#     return Response(
+#         "ttttttttttttttttttttttv",
+#         mimetype="text/csv",
+#         headers={"Content-disposition":
+#                      "attachment; filename=cucc.csv"})
+
+
+@app.route('/download-data-file')
+def download_file():
     file_handler.fill_csv_file()
-    return send_file('data/download/data.csv')
+    return send_file('data/download/data.csv',
+                     mimetype='text/csv',
+                     attachment_filename='data.csv',
+                     as_attachment=True)
 
 
 @app.route('/logout')

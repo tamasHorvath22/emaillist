@@ -86,6 +86,6 @@ def update_email(cursor, updated_email):
 @connection.connection_handler
 def get_data_to_write_to_file(cursor):
     cursor.execute("""
-                    SELECT CONCAT(last_name, ' ', first_name) AS name, email, phone FROM email_list
+                    SELECT last_name, first_name, email, phone FROM email_list
                     """)
     return cursor.fetchall()
