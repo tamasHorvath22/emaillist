@@ -86,10 +86,12 @@ dom = {
     search: function() {
         let input = document.getElementById("search");
         input.addEventListener('keyup', function() {
+            dom._searchedEmails = [];
             let searchInfo = input.value.toLowerCase();
             if(searchInfo === "") {
                 dom._emailsToDisplay = dom._allEmail;
                 dom.displayEmails();
+                return;
             }
             for(let i = 0; i < dom._allEmail.length; i++) {
                 for(let column of dom._columns) {
@@ -99,7 +101,8 @@ dom = {
                     }
                 }
             }
-            dom._allEmail = dom._searchedEmails;
+            dom._emailsToDisplay = dom._searchedEmails;
+            dom.displayEmails();
         })
 
     },
