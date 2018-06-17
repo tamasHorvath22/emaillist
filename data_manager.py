@@ -67,10 +67,10 @@ def get_email_data(cursor, id):
 
 
 @connection.connection_handler
-def delete_email(cursor, email_data):
+def delete_email_by_id(cursor, email_data):
     cursor.execute("""
                     DELETE FROM email_list
-                    WHERE id = %(id)s
+                    WHERE id = %(email_id)s
                     """, email_data)
 
 

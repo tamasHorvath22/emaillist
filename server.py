@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, session, jsonify, send_file, Response
+from flask import Flask, render_template, request, url_for, redirect, session, jsonify, send_file
 import data_manager
 import hash
 import login_module
@@ -95,7 +95,14 @@ def save_edited():
 def delete():
     email_data = request.form.to_dict()
     data_manager.delete_email(email_data)
-    return redirect(url_for('index'))
+    return "success"
+
+
+@app.route('/delete-by-id/<email_id>')
+def delete_by_id(email_id):
+    email_data = {"email_id": email_id}
+    data_manager.delete_email_by_id(email_data)
+    return redirect(url_for("index"))
 
 
 @app.route('/download-data-file')
@@ -111,3 +118,10 @@ def download_file():
 def logout():
     session.clear()
     return redirect(url_for('login'))
+
+
+if __name__ == '__main__':
+    app.run(
+        debug=True,
+        port=5000
+    )

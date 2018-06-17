@@ -48,9 +48,9 @@ dom = {
             tableRow.appendChild(modifyAnchorTag);
 
             let deleteButtonTag = document.createElement("button");
+            deleteButtonTag.setAttribute("class", "deleteButtons btn btn-danger");
             deleteButtonTag.setAttribute("data-toggle", "modal");
             deleteButtonTag.setAttribute("data-target", "#delete-modal");
-            deleteButtonTag.setAttribute("class", "deleteButtons btn btn-danger");
             deleteButtonTag.setAttribute("data-id", id);
             deleteButtonTag.innerText = "törlés";
             tableRow.appendChild(deleteButtonTag);
@@ -111,22 +111,14 @@ dom = {
 
     findIdToDeleteEmail: function() {
         let deleteButtons = document.getElementsByClassName("deleteButtons");
-        for(buttonToDelete of deleteButtons) {
+        for(let buttonToDelete of deleteButtons) {
             buttonToDelete.addEventListener('click', function() {
                 dom._idToDelete = buttonToDelete.dataset.id;
+                let deleteConfirmButton = document.getElementById("delete-link");
+                deleteConfirmButton.setAttribute("href", "/delete-by-id/" + dom._idToDelete);
+                dom._idToDelete = "";
             })
         }
-    },
-
-    deleteEmail: function() {
-        let deleteConfirmButton = document.getElementById("confirm_delete_button");
-        deleteConfirmButton.addEventListener('click', function() {
-            $.post('/delete', {
-                id: dom._idToDelete
-            });
-            let rowToDelete = document.getElementById(dom._idToDelete);
-            rowToDelete.remove();
-        });
     },
 
     modify: function() {
