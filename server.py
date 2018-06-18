@@ -9,6 +9,14 @@ app = Flask(__name__)
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 
+@app.route('/')
+def root_route():
+    if "username" in session:
+        return redirect(url_for("index"))
+    else:
+        return redirect(url_for("login"))
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -111,3 +119,10 @@ def download_file():
 def logout():
     session.clear()
     return redirect(url_for('login'))
+
+
+# if __name__ == '__main__':
+#     app.run(
+#         debug=True,
+#         port=5000
+#     )
